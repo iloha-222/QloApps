@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: qloapps_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${DB_NAME:-qloapps}
+      MYSQL_USER: ${DB_USER:-qloapps_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-qloapps_pass}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - qloapps_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # QloApps Application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qloapps_web
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_SERVER: db
+      DB_NAME: ${DB_NAME:-qloapps}
+      DB_USER: ${DB_USER:-qloapps_user}
+      DB_PASSWORD: ${DB_PASSWORD:-qloapps_pass}
+      DB_PREFIX: ${DB_PREFIX:-qlo_}
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./config:/var/www/html/config
+      - ./img:/var/www/html/img
+      - ./cache:/var/www/html/cache
+      - ./log:/var/www/html/log
+      - ./download:/var/www/html/download
+      - ./upload:/var/www/html/upload
+    networks:
+      - qloapps_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  qloapps_network:
+    driver: bridge

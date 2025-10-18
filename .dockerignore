@@ -1,0 +1,133 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+!README.md
+docs/
+CONTRIBUTING.md
+CHANGELOG.txt
+
+# IDE and editor files
+.idea
+.vscode
+.settings
+.project
+.buildpath
+*.sublime-project
+*.sublime-workspace
+nbproject
+.DS_Store
+
+# Development files
+.travis.yml
+tests/
+docker-compose.yml
+.env
+.env.example
+
+# Node modules and build files
+node_modules/
+bower_components/
+.sass-cache/
+
+# Logs
+*.log
+log/*
+!log/.htaccess
+!log/index.php
+
+# Cache
+cache/*
+!cache/cacert.pem
+!cache/index.php
+!cache/cachefs/
+!cache/purifier/
+!cache/push/
+!cache/sandbox/
+!cache/smarty/
+!cache/tcpdf/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+
+# Uploads and downloads (will be mounted as volumes in production)
+upload/*
+!upload/.htaccess
+!upload/index.php
+download/*
+!download/.htaccess
+!download/index.php
+
+# Images (will be mounted as volumes in production)
+img/*
+!img/404.gif
+!img/.htaccess
+!img/admin/
+!img/bg_500.png
+!img/bg_loader.png
+!img/c/index.php
+!img/cms/
+!img/co/index.php
+!img/favicon.ico
+!img/genders/
+!img/hotel_header_image.jpg
+!img/index.php
+!img/jquery-ui/
+!img/l/
+!img/logo*.jpg
+!img/logo_stores.*
+!img/m/index.php
+!img/macFFBgHack.png
+!img/os/index.php
+!img/p/index.php
+!img/prestashop-avatar.png
+!img/qloapps*.png
+!img/questionmark.png
+!img/rf/index.php
+!img/s/index.php
+!img/scenes/
+!img/st/index.php
+!img/su/index.php
+!img/t/
+!img/tmp/index.php
+
+# Config files (will be generated during installation)
+config/settings.inc.php
+config/settings.old.php
+config/xml/*
+!config/xml/.htaccess
+!config/xml/index.php
+!config/xml/qlo_mod_list.xml
+
+# Backups
+admin/backups/*
+!admin/backups/.htaccess
+!admin/backups/index.php
+admin/import/*
+!admin/import/.htaccess
+!admin/import/index.php
+*.sql
+*.backup
+
+# Compiled files
+composer.lock
+themes/*/cache/*
+admin/themes/*/cache/*
+
+# OS specific
+Thumbs.db
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Security
+*.pem
+*.key
+!cacert.pem

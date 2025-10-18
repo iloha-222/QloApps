@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk '{print $9, \"\"\"\"(\"\"\"\" $5 \"\"\"\")\"\"\"\"}')",
+      "Read(//Users/lauraneboulenger/my-clients-projects/sini-websites/3 cups/three-cups-training-program/**)",
+      "Bash(cat \"/Users/lauraneboulenger/my-clients-projects/sini-websites/3 cups/three-cups-training-program/src/layouts/BlogPostLayout.astro\")",
+      "Bash(cat \"/Users/lauraneboulenger/my-clients-projects/sini-websites/3 cups/three-cups-training-program/src/pages/training-2026.astro\")",
+      "Bash(git add .)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
